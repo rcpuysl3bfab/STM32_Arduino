@@ -1,21 +1,20 @@
 #ifndef LED_CONTROLLER_H
 #define LED_CONTROLLER_H
 
-#include <Arduino.h>
+#include <stdint.h> // Standard integer types
 
-class LEDController {
-public:
-  LEDController(int bluePin, int redPin, int greenPin);
+// LED Controller struct definition
+typedef struct {
+    uint8_t bluePin;
+    uint8_t redPin;
+    uint8_t greenPin;
+} LEDController;
 
-  void begin();
-  void setBlue(bool state);
-  void setRed(bool state);
-  void setGreen(bool state);
+// Function prototypes
+void LEDController_init(LEDController *controller, uint8_t bluePin, uint8_t redPin, uint8_t greenPin);
+void LEDController_begin(LEDController *controller);
+void LEDController_setBlue(LEDController *controller, uint8_t state);
+void LEDController_setRed(LEDController *controller, uint8_t state);
+void LEDController_setGreen(LEDController *controller, uint8_t state);
 
-private:
-  int bluePin;
-  int redPin;
-  int greenPin;
-};
-
-#endif
+#endif // LED_CONTROLLER_H

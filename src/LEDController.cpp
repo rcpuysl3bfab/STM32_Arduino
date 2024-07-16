@@ -1,25 +1,26 @@
 #include "LEDController.h"
+#include <Arduino.h> // Arduino framework
 
-LEDController::LEDController(int bluePin, int redPin, int greenPin) {
-  this->bluePin = bluePin;
-  this->redPin = redPin;
-  this->greenPin = greenPin;
+void LEDController_init(LEDController *controller, uint8_t bluePin, uint8_t redPin, uint8_t greenPin) {
+    controller->bluePin = bluePin;
+    controller->redPin = redPin;
+    controller->greenPin = greenPin;
 }
 
-void LEDController::begin() {
-  pinMode(bluePin, OUTPUT);
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
+void LEDController_begin(LEDController *controller) {
+    pinMode(controller->bluePin, OUTPUT);
+    pinMode(controller->redPin, OUTPUT);
+    pinMode(controller->greenPin, OUTPUT);
 }
 
-void LEDController::setBlue(bool state) {
-  digitalWrite(bluePin, state ? HIGH : LOW);
+void LEDController_setBlue(LEDController *controller, uint8_t state) {
+    digitalWrite(controller->bluePin, state);
 }
 
-void LEDController::setRed(bool state) {
-  digitalWrite(redPin, state ? HIGH : LOW);
+void LEDController_setRed(LEDController *controller, uint8_t state) {
+    digitalWrite(controller->redPin, state);
 }
 
-void LEDController::setGreen(bool state) {
-  digitalWrite(greenPin, state ? HIGH : LOW);
+void LEDController_setGreen(LEDController *controller, uint8_t state) {
+    digitalWrite(controller->greenPin, state);
 }
